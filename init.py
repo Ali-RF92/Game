@@ -1,5 +1,6 @@
 import pygame
+from constants import *
 
 pygame.init()
-game_display = pygame.display.set_mode((600,400))
-pygame.display.set_caption("My First Game")
+game_display = pygame.display.set_mode((WINDOW_SIZE))
+pygame.display.set_caption("Game: Tic-tac-toe")
