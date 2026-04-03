@@ -1,3 +1,5 @@
+import numpy as np
+
 
 # SIZE AND DEMISIONS
 WINDOW_SIZE = (400, 400)
@@ -13,4 +15,5 @@ green = (0, 255, 0)
 purple = (187, 132, 192)
 black = (0, 0, 0)
 
-
+# POSITION
+Game_board = np.array([[0,0,0], [0,0,0], [0,0,0]])
