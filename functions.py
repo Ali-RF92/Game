@@ -15,3 +15,20 @@ def circle(i):
                         red,
                         (CORDS[col]+HALF_TILE, CORDS[row]+HALF_TILE),
                         50, 7)
+    
+
+def cross(i):
+    row, col = i//3, i%3
+    pygame.draw.line(game_display, 
+                     blue, 
+                     (CORDS[col]+20, CORDS[row]+20), (CORDS[col]+TILE_SIZE-20, CORDS[row]+TILE_SIZE-20),
+                       7)
+    
+    pygame.draw.line(game_display, 
+                     blue, 
+                     (CORDS[col]+20, CORDS[row]+TILE_SIZE-20), (CORDS[col]+TILE_SIZE-20, CORDS[row]+20),
+                       7)
+    
+    
+    
+    

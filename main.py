@@ -4,7 +4,7 @@ import pygame
 import sys
 from init import *
 from objects import *
-from functions import show, circle
+from functions import show, circle, cross
 
 
 show()
@@ -19,7 +19,7 @@ while True:
             pos = pygame.mouse.get_pos()
             for sq in range(len(sq_list)):
                 if sq_list[sq].collidepoint(pos):
-                    circle(sq)
+                    cross(sq)
 
     
     pygame.display.update()       
