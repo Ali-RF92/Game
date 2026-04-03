@@ -11,14 +11,15 @@ from constants import Game_board
 turn = False 
 
 show()
+allow = True
+
 while True:
-   
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
-        if event.type == pygame.MOUSEBUTTONUP:
+        if event.type == pygame.MOUSEBUTTONUP and allow:
             pos = pygame.mouse.get_pos()
             for sq in range(len(sq_list)):
                 if sq_list[sq].collidepoint(pos):
@@ -32,21 +33,21 @@ while True:
                             cross(sq)
                             turn = not turn
                             Game_board[row][col] = int(turn)+1 # player 2
-                   # print(Game_board)
-                   
+                # print(Game_board)
+
     pygame.display.update()  
 
     state = check_state(Game_board)
-    if state != "Continue":
-        if state != "Tie":
-            print(f"Player {state} wins!")
-        else:
-            print("It's a tie!")
+    if allow:
+        if state != "Continue":
+            if state != "Tie":
+                print(f"Player {state} wins!")
+            else:
+                print("It's a tie!")
 
-        
-        if input("Do you want to play again? (y/n): ").lower() == 'y':      
-            Game_board = restart()
-            show()
-        else:
-            pygame.quit()
-            sys.exit()
+            
+            if input("Do you want to play again? (y/n): ").lower() == 'y':      
+                Game_board = restart()
+                show()
+            else:
+                allow = False
