@@ -3,20 +3,24 @@
 import pygame
 import sys
 from init import *
-from constants import *
 from objects import *
+from functions import show, circle
 
 
-def show():
-    for sq in sq_list:
-        pygame.draw.rect(game_display, white, sq)
-
+show()
 while True:
+   
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
-    show()
+        if event.type == pygame.MOUSEBUTTONUP:
+            pos = pygame.mouse.get_pos()
+            for sq in range(len(sq_list)):
+                if sq_list[sq].collidepoint(pos):
+                    circle(sq)
+
+    
     pygame.display.update()       
 
