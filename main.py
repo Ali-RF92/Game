@@ -5,7 +5,7 @@ import pygame
 import sys
 from init import *
 from objects import *
-from functions import show, circle, cross, check_state
+from functions import show, circle, cross, check_state, restart
 from constants import Game_board
 
 turn = False 
@@ -33,12 +33,20 @@ while True:
                             turn = not turn
                             Game_board[row][col] = int(turn)+1 # player 2
                    # print(Game_board)
+                   
+    pygame.display.update()  
 
-            state = check_state(Game_board)
-            if state != "Continue":
-                print(f"Player {state} wins!")
-                pygame.quit()
-                sys.exit()
-    
-    pygame.display.update()       
+    state = check_state(Game_board)
+    if state != "Continue":
+        if state != "Tie":
+            print(f"Player {state} wins!")
+        else:
+            print("It's a tie!")
 
+        
+        if input("Do you want to play again? (y/n): ").lower() == 'y':      
+            Game_board = restart()
+            show()
+        else:
+            pygame.quit()
+            sys.exit()

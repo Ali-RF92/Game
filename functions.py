@@ -44,11 +44,21 @@ def check_state(game_board):
         if len(col) == 1 and col!=0:
             return col
         
+        
     if game_board[0][0] == game_board[1][1] and game_board[1][1] == game_board[2][2] and game_board[0][0] !=0: 
         return game_board[0][0]
     
     elif game_board[2][0] == game_board[1][1] and game_board[1][1] == game_board[0][2] and game_board[2][0] !=0:
         return game_board[1][1]
     
+    
+    
+    if 0 not in np.unique(game_board):
+        return "Tie"
+    
 
     return "Continue"
+
+
+def restart():
+    return np.array([[0,0,0], [0,0,0], [0,0,0]])
